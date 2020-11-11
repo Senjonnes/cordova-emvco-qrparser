@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
     id="cordova-emvco-qrparser"
     version="1.0.0">
     <name>Cordova EMVCoParser plugin</name>
@@ -10,39 +12,20 @@
     <engines>
         <engine name="cordova" version=">=3.0.0" />
     </engines>
-    <repo>https://github.com/driftyco/cordova-plugin-template.git</repo>
-
+    <repo>https://github.com/Senjonnes/cordova-emvco-qrparser.git</repo>
+    <js-module src="www/emvco-qrparser.js" name="plugin">
+      <runs/>
+      <clobbers target="window.EMVCoQRParser" />
+    </js-module>
     <!-- android -->
     <platform name="android">
-      <js-module src="www/plugin.js" name="plugin">
-        <runs/>
-
-        <!-- This is the window variable name you want, like window.MyCordovaPlugin -->
-        <clobbers target="MyCordovaPlugin" />
-      </js-module>
       <config-file target="res/xml/config.xml" parent="/*">
-        <feature name="MyCordovaPlugin">
-          <param name="android-package" value="com.example.MyCordovaPlugin" />
+        <feature name="EMVCoQRParserPlugin">
+          <param name="android-package" value="com.ng.fidelitybank.emvco.qrparser.EMVCoQRParserPlugin" />
           <param name="onload" value="true" />
         </feature>
       </config-file>
-
-      <source-file src="src/android/com/example/MyCordovaPlugin.java" target-dir="src/com/example/" />
-    </platform>
-
-    <!-- ios -->
-    <platform name="ios">
-        <js-module src="www/plugin.js" name="plugin">
-            <runs/>
-            <clobbers target="MyCordovaPlugin" />
-        </js-module>
-        <config-file target="config.xml" parent="/*">
-            <feature name="MyCordovaPlugin">
-                <param name="ios-package" value="MyCordovaPlugin" onload="true" />
-            </feature>
-        </config-file>
-
-        <header-file src="src/ios/MyCordovaPlugin.h" />
-        <source-file src="src/ios/MyCordovaPlugin.m" />
+      <source-file src="src/android/Parser/EMVCoQRParserPlugin.java" target-dir="src/com/ng/fidelitybank/emvco/qrparser/" />
+      <source-file src="src/android/Model/EMVCoQRParserModel.java" target-dir="src/com/ng/fidelitybank/emvco/qrparser/" />
     </platform>
 </plugin>
